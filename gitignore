@@ -1,0 +1,7 @@
+.idea
+.claude
+.vscode
+AGENTS.md
+# IDE and editor files
+*.bak
+*.tmp
