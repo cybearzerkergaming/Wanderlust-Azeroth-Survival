@@ -1,8 +1,8 @@
-## Interface: 120001
+## Interface: 120000
 ## Title: Wanderlust
-## Notes: Manage vitals, stay alive. Version 5.0 - Full Survival Experience.
+## Notes: Manage vitals, stay alive. Version 0.0.2 Alpha - Full Survival Experience.
 ## Author: CyberzerkerGaming
-## Version: 0.0.1 Alpha
+## Version: 0.0.2 Alpha
 ## IconTexture: Interface\AddOns\Wanderlust\assets\fireicon
 ## SavedVariables: WanderlustDB, WanderlustLoggedFires
 ## SavedVariablesPerCharacter: WanderlustCharDB

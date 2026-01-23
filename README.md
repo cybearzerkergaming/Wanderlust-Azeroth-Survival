@@ -1,8 +1,6 @@
-![WanderlustHero](https://github.com/user-attachments/assets/70d82cb0-37a4-48fc-b763-29145ca026f6)
-
 # Wanderlust
 
-Transform your WoW experience into a Survival Experience.
+Transform your Classic WoW experience into a Survival Experience.
 
 Wanderlust adds immersive survival mechanics that make campfires, inns, and the wilderness feel meaningful again. Rest by the fire to recover, manage your hunger and thirst in the wilds, brave harsh temperatures, and feel the weight of your journey through exhaustion and anguish.
 
@@ -202,5 +200,3 @@ Show the intro stepper again (it appears at Level 6):
 ## Feedback & Support
 
 Found a bug? Have a suggestion? Missing a campfire location? Let me know!
-
-

@@ -2032,6 +2032,28 @@ local function CreateLingeringIcons(parent)
         }
     }
 
+local function GetLingeringRGB(effectKey)
+    if not WL.GetLingeringColor then
+        return 1, 1, 1
+    end
+
+    -- Some versions return a table {r,g,b}; others return r,g,b as multiple return values.
+    local c1, c2, c3 = WL.GetLingeringColor(effectKey)
+
+    if type(c1) == "table" then
+        local r = c1[1] or c1.r or 1
+        local g = c1[2] or c1.g or 1
+        local b = c1[3] or c1.b or 1
+        return r, g, b
+    end
+
+    if type(c1) == "number" then
+        return c1, (type(c2) == "number" and c2 or 1), (type(c3) == "number" and c3 or 1)
+    end
+
+    return 1, 1, 1
+end
+
     local function CreateLingeringIcon(effectKey, anchor, isFirst)
         local iconFrame = CreateFrame("Frame", nil, container)
         iconFrame:SetSize(RESTRICTION_ICON_SIZE, RESTRICTION_ICON_SIZE)
@@ -2054,11 +2076,8 @@ local function CreateLingeringIcons(parent)
         iconFrame.glow:SetAtlas("ArtifactsFX-SpinningGlowys")
         iconFrame.glow:SetBlendMode("ADD")
         iconFrame.glow:SetAlpha(0.6)
-
-        local glowColor = WL.GetLingeringColor and WL.GetLingeringColor(effectKey)
-        if glowColor then
-            iconFrame.glow:SetVertexColor(glowColor[1], glowColor[2], glowColor[3])
-        end
+        local r, g, b = GetLingeringRGB(effectKey)
+        iconFrame.glow:SetVertexColor(r, g, b)
 
         iconFrame.glowAG = iconFrame.glow:CreateAnimationGroup()
         iconFrame.glowAG:SetLooping("REPEAT")
@@ -2079,11 +2098,7 @@ local function CreateLingeringIcons(parent)
                 return
             end
             local info = effectInfo[self.effectKey]
-            local color = WL.GetLingeringColor and WL.GetLingeringColor(self.effectKey)
-            local r, g, b = 1, 1, 1
-            if color then
-                r, g, b = color[1], color[2], color[3]
-            end
+            local r, g, b = GetLingeringRGB(self.effectKey)
             GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
             GameTooltip:SetText(info.name, r, g, b)
             GameTooltip:AddLine(info.desc, 0.8, 0.8, 0.8, true)
